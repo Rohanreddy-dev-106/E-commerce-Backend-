@@ -26,7 +26,7 @@ export default class Products {
         res.status(404).send("Product is Not present...")
     }
     static Rateproducts(req, res, next) {
-
+         
     }
 
     static Filterproducts(req, res, next) {
