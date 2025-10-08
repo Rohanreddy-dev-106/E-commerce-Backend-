@@ -1,10 +1,12 @@
+/* The class `Products` contains methods for adding products, getting all products, getting a single
+product, rating products, and filtering products based on price. */
 import productModel from "./product.model.js";
 export default class Products {
 
     static Addproducts(req, res, next) {
 
         const { id, name, imageurl, category, price, size } = req.body
-        const newproduct = new ProductModel(id, name, imageurl, category, price, size);
+        const newproduct = new productModel(id, name, imageurl, category, price, size);
         productModel.ADD(newproduct)
         console.log(req.body);
 
@@ -26,7 +28,10 @@ export default class Products {
     static Rateproducts(req, res, next) {
 
     }
-    static Filterproducts(req, res, next) {
 
+    static Filterproducts(req, res, next) {
+        const { maxprise, minprise } = req.query;
+        const product_filtere = productModel.Filter(maxprise, minprise);
+        res.status(200).send(product_filtere);
     }
 }

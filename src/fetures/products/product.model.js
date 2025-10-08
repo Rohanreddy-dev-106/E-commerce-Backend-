@@ -1,3 +1,6 @@
+/* The class `productModel` defines a model for products with properties like id, name, image URL,
+category, price, and size, along with static methods for retrieving data, adding new products,
+getting a single product by id, and filtering products based on price range. */
 export default class productModel {
   id;
   name;
@@ -27,6 +30,14 @@ export default class productModel {
 
     })
     return data;
+  }
+  static Filter(maxprise, minprise) {
+    const product = products.filter((value) => {
+      if (value.price >= minprise && value.price <= maxprise) {
+        return true;
+      }
+    })
+    return product;
   }
 }
 const products = [
