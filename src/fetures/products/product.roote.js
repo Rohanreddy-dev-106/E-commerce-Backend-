@@ -3,6 +3,7 @@ of what it does: */
 import express from "express"
 import productcontroller from "./product.controller.js"
 import fileurl from "../middlewares/file.uplode.middleware.js"
+import Auth from "../middlewares/BasicAuth.middleware.js"
 const router=express.Router();
 // console.log(Object.getPrototypeOf(router));
 
@@ -10,7 +11,7 @@ const router=express.Router();
 //it has the patten 
 
 
-router.get("/",productcontroller.Getproducts);
+router.get("/",Auth,productcontroller.Getproducts);
 const middlewares=[fileurl.array("URL",10),productcontroller.Addproducts]
 router.post("/add",middlewares)//we can take multiple url with it the name="URL"
 router.get("/one/:id",productcontroller.Getone);
