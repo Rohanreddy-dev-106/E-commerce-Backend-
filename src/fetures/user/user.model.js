@@ -3,14 +3,16 @@ export default class Usermodel {
     _password;
     _Name;
     _Type;
-    constructor(emil, password, name, type) {
+    _id;
+    constructor(emil, password, name, type,id) {
         this._Email = emil;
         this._password = password
         this._Name = name
         this._Type = type
+        this._id=id;
     }
     static Signup({email, password, name, type}) {
-        const new_user = new Usermodel(email, password, name, type);
+        const new_user = new Usermodel(email, password, name, type,users.length+1);
         users.push(new_user);
         return new_user;
     }
