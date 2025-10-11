@@ -7,6 +7,9 @@
 
 import Usermodel from "./user.model.js";
 import jwt from "jsonwebtoken";
+ import dotenv from "dotenv";
+ dotenv.config();
+
 export default class Usercontroller {
     static signup(req, res, next) {
         const user = Usermodel.Signup(req.body);
@@ -21,17 +24,22 @@ export default class Usercontroller {
         else {
             const token = jwt.sign(
                 { UserID: user._id, Email: user._Email },
-                "VqLmXgmOBeMXUqyT31mPWEUOKoG1SP5i29D7794E95BC6BFA11ABA3572D942",
+                process.env.JWT_TOKEN_KEY,
                 {
                     algorithm: "HS256",
                     expiresIn: "6d",
                 }
             );
+            const EXPIRE = 6 * 24 * 60 * 60 * 1000; // 6 days in ms
+            res.cookie("jwtToken", token, {
+                maxAge: EXPIRE,
+                httpOnly: true,
+            });
 
             if (!token) {
                 res.status(400).send("Invilled Signin..");
             }
-            res.status(201).send(token);
+            res.status(201).send("Your are signin..");
         }
     }
 }

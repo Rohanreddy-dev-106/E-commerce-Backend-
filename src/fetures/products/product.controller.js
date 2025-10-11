@@ -1,6 +1,7 @@
 /* The class `Products` contains methods for adding products, getting all products, getting a single
 product, rating products, and filtering products based on price. */
 import productModel from "./product.model.js";
+ 
 export default class Products {
 
     static Addproducts(req, res, next) {

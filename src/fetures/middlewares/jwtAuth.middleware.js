@@ -15,8 +15,11 @@
  */
 
 import jwt from "jsonwebtoken";
+ import dotenv from "dotenv";
+ dotenv.config();
 export default function jwtAuth(req, res, next) {
-  const token = req.headers["authorization"];
+const token = req.cookies.jwtToken;
+ // const token = req.headers["authorization"];
   console.log(token);
   
   if (!token) {
@@ -25,7 +28,7 @@ export default function jwtAuth(req, res, next) {
     try {
       const paylode = jwt.verify(
         token,
-        "VqLmXgmOBeMXUqyT31mPWEUOKoG1SP5i29D7794E95BC6BFA11ABA3572D942"
+       process.env.JWT_TOKEN_KEY,
       );
       console.log(paylode);
       
