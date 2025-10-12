@@ -29,9 +29,9 @@ export default class Usermodel {
     }
 }
 
-const user1 = new Usermodel('rohan@example.com', 'pass123', 'Rohan Reddy', 'admin');
-const user2 = new Usermodel('neela@example.com', 'neela456', 'Neela Kumari', 'user');
-const user3 = new Usermodel('john@example.com', 'john789', 'John Doe', 'user');
+const user1 = new Usermodel('rohan@example.com', 'pass123', 'Rohan Reddy', 'admin',1);
+const user2 = new Usermodel('neela@example.com', 'neela456', 'Neela Kumari', 'user',2);
+const user3 = new Usermodel('john@example.com', 'john789', 'John Doe', 'user',3);
 
 // Store them in an array
 const users = [user1, user2, user3];

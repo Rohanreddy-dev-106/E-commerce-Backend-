@@ -17,6 +17,7 @@ const middlewares=[fileurl.array("URL",10),productcontroller.Addproducts]
 router.post("/add",middlewares)//we can take multiple url with it the name="URL"
 router.get("/one/:id",productcontroller.Getone);
 router.get("/filter",productcontroller.Filterproducts)
+router.post("/rate",productcontroller.Rateproducts)
 
 export default router;
 

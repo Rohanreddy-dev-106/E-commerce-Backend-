@@ -27,7 +27,14 @@ export default class Products {
         res.status(404).send("Product is Not present...")
     }
     static Rateproducts(req, res, next) {
-         
+         const{userid, productid,rating}=req.query;
+        const error=productModel.ProductRating(Number(userid),Number(productid),Number(rating));
+        if(error){
+            res.status(400).send(error)
+        }
+        else{
+            res.status(200).send("Rating is Done....");
+        }
     }
 
     static Filterproducts(req, res, next) {

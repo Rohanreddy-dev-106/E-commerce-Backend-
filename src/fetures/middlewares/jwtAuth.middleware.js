@@ -17,6 +17,7 @@
 import jwt from "jsonwebtoken";
  import dotenv from "dotenv";
  dotenv.config();
+ 
 export default function jwtAuth(req, res, next) {
 const token = req.cookies.jwtToken;
  // const token = req.headers["authorization"];

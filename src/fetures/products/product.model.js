@@ -1,6 +1,5 @@
-/* The class `productModel` defines a model for products with properties like id, name, image URL,
-category, price, and size, along with static methods for retrieving data, adding new products,
-getting a single product by id, and filtering products based on price range. */
+import userModel from "../user/user.model.js";
+
 export default class productModel {
   id;
   name;
@@ -38,6 +37,43 @@ export default class productModel {
       }
     })
     return product;
+  }
+  static ProductRating(UserID, ProductID,rating) {
+    let user = userModel.GetAll().find((user) => {
+      if (user._id === UserID) {
+        return true;
+      }
+    })
+    if (!user) {
+      return "User is not Exist.."
+    }
+    let product = products.find((p) => {
+      if (p.id === ProductID) {
+        return true;
+      }
+    })
+    if (!product) {
+      return "Product is not Exist.."
+    }
+    if (!product.rating) {
+      let ratingArray = [];
+      ratingArray.push({ userid: UserID, productid: ProductID ,Rating:rating});
+      product.rating = ratingArray;
+    }
+    else {
+      const existingUser = product.rating.findIndex((r) => {
+        if (r.userid === UserID) {
+          return true;
+        }
+      })
+      if (existingUser >= 0) {
+        product.rating[existingUser] = { userid: UserID, productid: ProductID ,Rating:rating};
+      }
+      else {
+        product.rating.push({ userid: UserID, productid: ProductID ,Rating:rating});
+      }
+    }
+
   }
 }
 const products = [
