@@ -1,45 +1,57 @@
-/* The class `Products` contains methods for adding products, getting all products, getting a single
-product, rating products, and filtering products based on price. */
+/**
+ * The class `Products` contains methods for adding products, getting all products, getting a single
+ * product, rating products, and filtering products based on price.
+ *
+ * @format
+ */
+
 import productModel from "./product.model.js";
- 
+
 export default class Products {
+  static Addproducts(req, res, next) {
+    const { id, name, imageurl, category, price, size } = req.body;
+    const newproduct = new productModel(
+      id,
+      name,
+      imageurl,
+      category,
+      price,
+      size
+    );
+    productModel.ADD(newproduct);
+    console.log(req.body);
 
-    static Addproducts(req, res, next) {
+    res.status(201).send(req.body);
+  }
+  static Getproducts(req, res, next) {
+    res.status(200).json({ product: productModel.Getdata() });
+  }
+  static Getone(req, res, next) {
+    const { id } = req.params;
 
-        const { id, name, imageurl, category, price, size } = req.body
-        const newproduct = new productModel(id, name, imageurl, category, price, size);
-        productModel.ADD(newproduct)
-        console.log(req.body);
-
-        res.status(201).send(req.body);
-
+    const data = productModel.ONE(id);
+    if (data) {
+      res.status(200).send(data);
     }
-    static Getproducts(req, res, next) {
-        res.status(200).json({ "product": productModel.Getdata() })
+    res.status(404).send("Product is Not present...");
+  }
+  static Rateproducts(req, res, next) {
+    const { userid, productid, rating } = req.query;
+    const error = productModel.ProductRating(
+      Number(userid),
+      Number(productid),
+      Number(rating)
+    );
+    if (error) {
+      res.status(400).send(error);
+    } else {
+      res.status(200).send("Rating is Done....");
     }
-    static Getone(req, res, next) {
-        const { id } = req.params;
+  }
 
-        const data = productModel.ONE(id);
-        if (data) {
-            res.status(200).send(data)
-        }
-        res.status(404).send("Product is Not present...")
-    }
-    static Rateproducts(req, res, next) {
-         const{userid, productid,rating}=req.query;
-        const error=productModel.ProductRating(Number(userid),Number(productid),Number(rating));
-        if(error){
-            res.status(400).send(error)
-        }
-        else{
-            res.status(200).send("Rating is Done....");
-        }
-    }
-
-    static Filterproducts(req, res, next) {
-        const { maxprise, minprise } = req.query;
-        const product_filtere = productModel.Filter(maxprise, minprise);
-        res.status(200).send(product_filtere);
-    }
+  static Filterproducts(req, res, next) {
+    const { maxprise, minprise } = req.query;
+    const product_filtere = productModel.Filter(maxprise, minprise);
+    res.status(200).send(product_filtere);
+  }
 }

@@ -1,3 +1,7 @@
+/* The productModel class defines properties and methods for managing product data in an e-commerce
+application. */
+/** @format */
+
 import userModel from "../user/user.model.js";
 
 export default class productModel {
@@ -19,15 +23,14 @@ export default class productModel {
     return products;
   }
   static ADD(new_product) {
-    products.push(new_product)
+    products.push(new_product);
   }
   static ONE(id) {
     const data = products.find((value) => {
       if (value.id === Number(id)) {
-        return true
+        return true;
       }
-
-    })
+    });
     return data;
   }
   static Filter(maxprise, minprise) {
@@ -35,45 +38,54 @@ export default class productModel {
       if (value.price >= minprise && value.price <= maxprise) {
         return true;
       }
-    })
+    });
     return product;
   }
-  static ProductRating(UserID, ProductID,rating) {
+  static ProductRating(UserID, ProductID, rating) {
     let user = userModel.GetAll().find((user) => {
       if (user._id === UserID) {
         return true;
       }
-    })
+    });
     if (!user) {
-      return "User is not Exist.."
+      return "User is not Exist..";
     }
     let product = products.find((p) => {
       if (p.id === ProductID) {
         return true;
       }
-    })
+    });
     if (!product) {
-      return "Product is not Exist.."
+      return "Product is not Exist..";
     }
     if (!product.rating) {
       let ratingArray = [];
-      ratingArray.push({ userid: UserID, productid: ProductID ,Rating:rating});
+      ratingArray.push({
+        userid: UserID,
+        productid: ProductID,
+        Rating: rating,
+      });
       product.rating = ratingArray;
-    }
-    else {
+    } else {
       const existingUser = product.rating.findIndex((r) => {
         if (r.userid === UserID) {
           return true;
         }
-      })
+      });
       if (existingUser >= 0) {
-        product.rating[existingUser] = { userid: UserID, productid: ProductID ,Rating:rating};
-      }
-      else {
-        product.rating.push({ userid: UserID, productid: ProductID ,Rating:rating});
+        product.rating[existingUser] = {
+          userid: UserID,
+          productid: ProductID,
+          Rating: rating,
+        };
+      } else {
+        product.rating.push({
+          userid: UserID,
+          productid: ProductID,
+          Rating: rating,
+        });
       }
     }
-
   }
 }
 const products = [
@@ -156,6 +168,5 @@ const products = [
     "Clothing",
     899,
     "L"
-  )
+  ),
 ];
-
