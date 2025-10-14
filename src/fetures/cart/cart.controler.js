@@ -28,5 +28,11 @@ export default class Cartcontroler {
         const userCart = Model.Getcard(req.UserID);
         res.status(200).send(userCart)
     }
+    static del(req,res,next){
+      const { productID } = req.query;
+       const user = req.UserID;
+      Model.delete(productID);
+     res.status(404).send("cARD is deleted...");
+    }
 
 }

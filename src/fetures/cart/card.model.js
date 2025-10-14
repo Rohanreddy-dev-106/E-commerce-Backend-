@@ -14,22 +14,35 @@ export default class Cardmodels {
         cards.push(new_cart);
         return new_cart;
     }
-    static Update(userid,productid,quentaty){
-        const card=cards.findIndex((user)=>{
-            if(user.UserID===userid && user.productID===productid){
+    static Update(userid, productid, quentaty) {
+        const card = cards.findIndex((user) => {
+            if (user.UserID === userid && user.productID === productid) {
                 return true;
             }
         })
-        if(!cards[card]){
+        if (!cards[card]) {
             return;
         }
-        cards[card].quentaty=quentaty
+        cards[card].quentaty = quentaty
         return "Updated..."
-        
+
     }
-    static Getcard(userid){
-        const cart=cards.filter((u)=>{
-            if(u.UserID===userid){
+    static delete(productID, user) {
+        const cartitem = cards.findIndex((c) => {
+            if (c.productID === productID && c.UserID === user) {
+                return true;
+            }
+        })
+        if (cartitem < 0) {
+            return "Product is Not Found.."
+        }
+        else {
+            const del = cards.splice(cartitem, 1);
+        }
+    }
+    static Getcard(userid) {
+        const cart = cards.filter((u) => {
+            if (u.UserID === userid) {
                 return true;
             }
         })

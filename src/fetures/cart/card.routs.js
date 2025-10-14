@@ -6,6 +6,7 @@ const router=express.Router()
 
 router.post("/",jwtAuth,controlers.add,controlers)
 router.get("/get",jwtAuth,controlers.get)
+router.delete("/",jwtAuth,controlers.del)
 
 
 export default router;
