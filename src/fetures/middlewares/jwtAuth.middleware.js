@@ -32,6 +32,7 @@ const token = req.cookies.jwtToken;
        process.env.JWT_TOKEN_KEY,
       );
       console.log(paylode);
+      // attach the userid to req object with a key value pare
       req.UserID=paylode.UserID;
       
     } catch (error) {
