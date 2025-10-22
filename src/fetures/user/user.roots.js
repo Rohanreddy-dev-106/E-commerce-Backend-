@@ -3,6 +3,7 @@ of what it does: */
 import express from "express"
 import controllers from "./user.controler.js"
 
+
 const router=express.Router();
 // console.log(Object.getPrototypeOf(router));
 

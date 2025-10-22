@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cardrouts from "./src/fetures/cart/card.routs.js"
 import CORS from "cors";
+import Loggermiddleware from "./src/fetures/middlewares/logger.middleware.js";
 const server=express();
 server.use(CORS())
 
@@ -18,7 +19,7 @@ server.use(cookieParser())
 server.use(express.static("public"));
 
 //we just give pattens it uses the middleware to route to  it
-
+server.use(Loggermiddleware)
 server.use("/api/products",productrouter)
 server.use("/api/users",usersroute)
 server.use("/api/card",cardrouts)

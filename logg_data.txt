@@ -1,0 +1,3 @@
+{"level":"info","message":"/api/products/"}
+{"level":"info","message":"/api/products/"}
+{"level":"info","message":"/api/products/filter?maxprise=500&minprise=100"}
