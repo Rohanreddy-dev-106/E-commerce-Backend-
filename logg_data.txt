@@ -1,3 +1,10 @@
 {"level":"info","message":"/api/products/"}
 {"level":"info","message":"/api/products/"}
 {"level":"info","message":"/api/products/filter?maxprise=500&minprise=100"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/favicon.ico"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/api/products/"}
