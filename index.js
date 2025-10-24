@@ -9,7 +9,6 @@ import cardrouts from "./src/fetures/cart/card.routs.js"
 import CORS from "cors";
 import Loggermiddleware from "./src/fetures/middlewares/logger.middleware.js";
 const server=express();
-server.use(CORS())
 
 const data = JSON.parse(readFileSync("./swagger.json", 'utf8'));
 // server.use(bodyParser.json())//it shoud  be first middlare to  file to pass the data
@@ -17,6 +16,11 @@ server.use("/api-doc-rohan",swagger.serve,swagger.setup(data))
 server.use(express.json())
 server.use(cookieParser())
 server.use(express.static("public"));
+const corsoptions={
+  origin:"*",
+  allowedHeadders:"*"
+}
+server.use(CORS(corsoptions))
 
 //we just give pattens it uses the middleware to route to  it
 server.use(Loggermiddleware)

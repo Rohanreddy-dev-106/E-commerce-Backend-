@@ -19,7 +19,7 @@ const logger=winston.createLogger({
         new winston.transports.File({filename:"logg_data.txt"})//new is for  File  class 
     ]
 })
-async function Loggermiddleware(req, res, next) {
+function Loggermiddleware(req, res, next) {
     if (!req.url.includes("/signin")) {
         // await Logger(req.body, req.url, req.method)
         logger.info(req.url);
