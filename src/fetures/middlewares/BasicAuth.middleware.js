@@ -14,6 +14,7 @@ export default function BasicAuth(req, res, next) {
         const validcred = Buffer.from(base64code, "base64").toString("utf-8"); //"username:password"
         const cred = validcred.split(":");//Array[name,password]
         const [username, password] = cred;
+        //Cheak inn Data Base
         const user = Model.GetAll().find((value) => {
             if (username === value._Name && password === value._password) {
                 return true;

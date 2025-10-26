@@ -12,3 +12,6 @@
 {"level":"info","message":"/"}
 {"level":"info","message":"/"}
 {"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/favicon.ico"}
