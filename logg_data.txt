@@ -15,3 +15,10 @@
 {"level":"info","message":"/"}
 {"level":"info","message":"/"}
 {"level":"info","message":"/favicon.ico"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/favicon.ico"}
+{"level":"info","message":"/api/users/signup"}
+{"level":"info","message":"/api/users/signup"}
+{"level":"info","message":"/api/users/signup"}
+{"level":"info","message":"/api/users/signup"}
+{"level":"info","message":"/api/users/signup"}

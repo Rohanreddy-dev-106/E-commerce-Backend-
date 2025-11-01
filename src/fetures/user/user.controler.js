@@ -11,8 +11,8 @@ import jwt from "jsonwebtoken";
  dotenv.config();
 
 export default class Usercontroller {
-    static signup(req, res, next) {
-        const user = Usermodel.Signup(req.body);
+    static async signup(req, res, next) {
+        const user = await Usermodel.Signup(req.body);
         res.status(201).send(user);
     }
     static signin(req, res, next) {
