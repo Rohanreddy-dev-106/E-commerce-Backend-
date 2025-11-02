@@ -1,41 +1,14 @@
-import { GetDb } from "../../config/mongodb.js";
+
 export default class Usermodel {
     Email;
     password;
     Name;
     Type;
-    id;
-    constructor(emil, password, name, type, id) {
+    constructor(emil, password, name, type) {
         this.Email = emil;
         this.password = password
         this.Name = name
         this.Type = type
-        this.id = id;
-    }
-    static async Signup({ email, password, name, type }) {
-        try {
-            const db = GetDb();
-            const collection = db.collection("users");
-
-
-            const new_user = new Usermodel(email, password, name, type);
-
-            const result = await collection.insertOne(new_user);
-            return { new_user, result };
-        } catch (error) {
-            console.log("Signup error:", error.message);
-        }
-    }
-    static Signin(emil, password) {
-        // const user = users.find((user) => {
-        //     if (user._Email === emil && user._password === password) {
-        //         return true;
-        //     }
-        // })
-        // return user;
-    }
-    static GetAll() {
-        // return users;
     }
 }
 

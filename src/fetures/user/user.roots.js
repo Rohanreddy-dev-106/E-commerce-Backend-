@@ -9,8 +9,14 @@ const router=express.Router();
 
 
 //it has the patten 
-router.post("/signup",controllers.signup)
-router.post("/signin",controllers.signin);
+const usercontroller=new controllers();
+// router.post("/signup",usercontroller.signup.bind(usercontroller))
+// router.post("/signin", usercontroller.signin.bind(usercontroller));
+//TODO:If you directly pass a class method → you lose this.You fix it using either .bind() or an arrow function.
+router.post("/signup",(req,res,next)=>{
+    usercontroller.signup(req,res,next)
+})
+router.post("/signin", usercontroller.signin.bind(usercontroller));
 
 
 
