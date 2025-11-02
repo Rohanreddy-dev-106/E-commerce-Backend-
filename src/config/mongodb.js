@@ -25,4 +25,5 @@ function GetDb() {
         return clintDB.db()
     }
 }
+
 export { ConnectTOmongoDb, GetDb }

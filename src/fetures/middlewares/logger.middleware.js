@@ -13,12 +13,14 @@ const fspromices = fs.promises;
 //     }
 // }
 const logger=winston.createLogger({
+    
     level:"info",
     format :winston.format.json(),
     transports:[
         new winston.transports.File({filename:"logg_data.txt"})//new is for  File  class 
     ]
 })
+    console.log(typeof logger)
 function Loggermiddleware(req, res, next) {
     if (!req.url.includes("/signin")) {
         // await Logger(req.body, req.url, req.method)

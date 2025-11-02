@@ -18,7 +18,9 @@ export default class Usercontroller {
     async signup(req, res, next) {
         try {
             const { email, password, name, type } = req.body;
+            //hash password
             const hashpassword=await bcrypt.hash(password,12);
+
             const user = new Usermodel(email, hashpassword, name, type);
             const result=await this.userrepo.Signup(user);// hear this is a constructer object 
             res.status(201).send(result);
@@ -32,7 +34,7 @@ export default class Usercontroller {
             const { email, password } = req.body;
             const user=await this.userrepo.FindEmail(email);
 
-            // Await the repo call
+            // compared hased password
             const finduser = await bcrypt.compare(password,user.password)
 
             if (!finduser) {
@@ -68,5 +70,4 @@ export default class Usercontroller {
             res.status(500).send("Signin failed");
         }
     }
-
 }
