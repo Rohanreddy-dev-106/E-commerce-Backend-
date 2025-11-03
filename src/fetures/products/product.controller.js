@@ -6,35 +6,46 @@
  */
 
 import productModel from "./product.model.js";
-
+import Productrepository from "./products.repository.js";
 export default class Products {
-  static Addproducts(req, res, next) {
-    const { id, name, imageurl, category, price, size } = req.body;
-    const newproduct = new productModel(
-      id,
-      name,
-      imageurl,
-      category,
-      price,
-      size
-    );
-    productModel.ADD(newproduct);
+  Productrepo;
+  constructor(Name) {
+    this.Productrepo = new Productrepository(Name);
+  }
+  async Addproducts(req, res, next) {
+    const { name, imageUrl, category, price, size } = req.body;
+    const newproduct = new productModel(name, imageUrl, category, price, size);
+    const result = await this.Productrepo.Addproduct(newproduct);
     console.log(req.body);
 
-    res.status(201).send(req.body);
+    res.status(201).send(result);
   }
-  static Getproducts(req, res, next) {
-    res.status(200).json({ product: productModel.Getdata() });
+  async Getproducts(req, res, next) {
+    const result = await this.Productrepo.GetAll();
+    res.status(200).send(result);
   }
-  static Getone(req, res, next) {
-    const { id } = req.params;
 
-    const data = productModel.ONE(id);
-    if (data) {
-      res.status(200).send(data);
+  async Getone(req, res, next) {
+    try {
+      const { id } = req.params;
+
+      const data = await this.Productrepo.getOne(id);
+      if (data) {
+        res.status(200).send(data);
+      }
+      res.status(404).send("Product is Not present...");
     }
-    res.status(404).send("Product is Not present...");
+    catch (error) {
+      console.log(error.message);
+
+    }
   }
+
+
+
+
+
+
   static Rateproducts(req, res, next) {
     const { userid, productid, rating } = req.query;
     const error = productModel.ProductRating(

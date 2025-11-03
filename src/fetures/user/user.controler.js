@@ -2,10 +2,10 @@
 import Usermodel from "./user.model.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+dotenv.config();
 import Userrepository from "./users.repository.js"
 import bcrypt from "bcrypt"
 
-dotenv.config();
 
 export default class Usercontroller {
     userrepo;

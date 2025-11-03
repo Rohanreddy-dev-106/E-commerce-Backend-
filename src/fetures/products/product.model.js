@@ -5,34 +5,19 @@ application. */
 import userModel from "../user/user.model.js";
 
 export default class productModel {
-  id;
   name;
   imageurl;
   category;
   price;
   size;
-  constructor(_id, _name, _imageURL, _cat, _price, _size) {
-    this.id = _id;
+  constructor(_name, _imageURL, _cat, _price, _size) {
     this.name = _name;
     this.imageurl = _imageURL;
     this.category = _cat;
     this.price = _price;
     this.size = _size;
   }
-  static Getdata() {
-    return products;
-  }
-  static ADD(new_product) {
-    products.push(new_product);
-  }
-  static ONE(id) {
-    const data = products.find((value) => {
-      if (value.id === Number(id)) {
-        return true;
-      }
-    });
-    return data;
-  }
+
   static Filter(maxprise, minprise) {
     const product = products.filter((value) => {
       if (value.price >= minprise && value.price <= maxprise) {
