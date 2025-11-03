@@ -11,14 +11,15 @@ const router=express.Router();
 
 //it has the patten 
 const ProductControler=new productcontroller("product");
-console.log(productcontroller);
+console.log(ProductControler,"this is product object");
 
-router.get("/",jwtAuth,ProductControler.Getproducts.bind(ProductControler));
-const middlewares = [fileurl.array("URL",10), ProductControler.Addproducts.bind(ProductControler)];
+router.get("/",jwtAuth,(req,res,next)=>{
+    ProductControler.Getproducts(req,res,next)
+});
+const middlewares = [fileurl.array("URL",10), (req,res,next)=>{ProductControler.Getproducts(req,res,next)}];
 router.post("/add",middlewares)//we can take multiple url with it the name="URL"
-router.get("/one/:id",ProductControler.Getone.bind(ProductControler));
-router.get("/filter",productcontroller.Filterproducts)
-router.post("/rate",jwtAuth,productcontroller.Rateproducts)
-
+router.get("/one/:id",(req,res,next)=>{ProductControler.Getone(req,res,next)});
+router.get("/filter",(req,res,next)=>{ProductControler.Filterproducts(req,res,next)})
+router.post("/rate",(req,res,next)=>{ProductControler.Rateproducts(req.res,next)})
 export default router;
 

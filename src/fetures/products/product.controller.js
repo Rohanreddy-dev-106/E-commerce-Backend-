@@ -39,30 +39,41 @@ export default class Products {
       console.log(error.message);
 
     }
+   
   }
 
 
 
 
+async Rateproducts(req, res, next) {
+  try {
+    const { userid, productid, rating } = req.body || {};
+    if (!userid || !productid || rating == null) {
+      return res.status(400).send("Missing required fields");
+    }
 
-
-  static Rateproducts(req, res, next) {
-    const { userid, productid, rating } = req.query;
-    const error = productModel.ProductRating(
+    const error = await this.Productrepo.RateProduct(
       Number(userid),
       Number(productid),
       Number(rating)
     );
+
     if (error) {
       res.status(400).send(error);
     } else {
       res.status(200).send("Rating is Done....");
     }
+  } catch (err) {
+  console.log(err.message);
+  
   }
+}
 
-  static Filterproducts(req, res, next) {
+
+
+  async Filterproducts(req, res, next) {
     const { maxprise, minprise } = req.query;
-    const product_filtere = productModel.Filter(maxprise, minprise);
+    const product_filtere = await this.Productrepo.Filter(maxprise,minprise);
     res.status(200).send(product_filtere);
   }
 }
