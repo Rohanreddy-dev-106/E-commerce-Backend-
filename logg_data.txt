@@ -113,3 +113,4 @@
 {"level":"info","message":"/api/products/rate"}
 {"level":"info","message":"/api/products/rate"}
 {"level":"info","message":"/api/products/rate"}
+{"level":"info","message":"/api/products/rate"}
