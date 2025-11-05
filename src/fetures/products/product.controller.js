@@ -44,7 +44,6 @@ export default class Products {
 
 
 
-
 async Rateproducts(req, res, next) {
   try {
     const { userid, productid, rating } = req.body || {};
@@ -52,22 +51,19 @@ async Rateproducts(req, res, next) {
       return res.status(400).send("Missing required fields");
     }
 
-    const error = await this.Productrepo.RateProduct(
-      Number(userid),
-      Number(productid),
-      Number(rating)
-    );
+    const result = await this.Productrepo.RateProduct(userid, productid, rating);
 
-    if (error) {
-      res.status(400).send(error);
-    } else {
-      res.status(200).send("Rating is Done....");
+    if (!result) {
+      return res.status(400).send("Failed to rate product");
     }
+
+    res.status(200).send("Rating is Done....");
   } catch (err) {
-  console.log(err.message);
-  
+    console.error("Rateproducts error:", err.message);
+    res.status(500).send("Internal server error");
   }
 }
+
 
 
 
