@@ -1,3 +1,6 @@
+/* This class represents a product repository with methods for adding products, retrieving all
+products, getting a single product by ID, filtering products by price range, and rating a product
+with user feedback. */
 import { ObjectId } from "mongodb"; // Use ObjectId from mongodb driver
 import { GetDb } from "../../config/mongodb.js"; // Get the connected DB instance
 

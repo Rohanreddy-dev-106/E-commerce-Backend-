@@ -3,10 +3,10 @@ import controlers from "./cart.controler.js"
 import jwtAuth from "../middlewares/jwtAuth.middleware.js"
 
 const router=express.Router()
-
-router.post("/",jwtAuth,controlers.add,controlers)
-router.get("/get",jwtAuth,controlers.get)
-router.delete("/",jwtAuth,controlers.del)
+const controller=new controlers("Cart");
+router.post("/",jwtAuth,(req,res,next)=>{controller.add(req , res , next)});
+router.get("/get",jwtAuth,(req,res,next)=>{controller.get(req , res , next)})
+router.delete("/",jwtAuth,(req,res,next)=>{controller.del(req , res , next)})
 
 
 export default router;

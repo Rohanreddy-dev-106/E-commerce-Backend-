@@ -10,7 +10,7 @@ import Productrepository from "./products.repository.js";
 export default class Products {
   Productrepo;
   constructor(Name) {
-    this.Productrepo = new Productrepository(Name);
+    this.Productrepo = new Productrepository(Name);//it represent a single product
   }
   async Addproducts(req, res, next) {
     const { name, imageUrl, category, price, size } = req.body;
