@@ -145,3 +145,4 @@
 {"level":"info","message":"/api/card/"}
 {"level":"info","message":"/api/card/get"}
 {"level":"info","message":"/api/card/get"}
+{"level":"info","message":"/api/card/get"}
