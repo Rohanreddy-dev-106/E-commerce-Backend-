@@ -40,6 +40,7 @@ export default class Usercontroller {
             if (!finduser) {
                 return res.status(404).send("User not found");
             }
+            else{
 
             // Create JWT token
             const token = jwt.sign(
@@ -64,6 +65,7 @@ export default class Usercontroller {
                 message: "Signin successful",
                 user: finduser,
             });
+        }
 
         } catch (error) {
             console.error("Signin Error:", error.message);
