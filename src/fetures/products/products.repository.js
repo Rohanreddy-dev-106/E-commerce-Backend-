@@ -26,7 +26,7 @@ export default class Productrepository {
         try {
             const db = GetDb();
             const collection = db.collection(this._collectionName);
-            const result = await collection.find().toArray();
+            const result = await collection.find().project({name:1,price:1,_id:0}).toArray();
             return { result };
         } catch (error) {
             console.log("GetAll error:", error.message);

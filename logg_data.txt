@@ -187,3 +187,4 @@
 {"level":"info","message":"/api/card/"}
 {"level":"info","message":"/api/card/"}
 {"level":"info","message":"/api/card/"}
+{"level":"info","message":"/api/products"}
