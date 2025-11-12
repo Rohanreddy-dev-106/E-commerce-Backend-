@@ -72,4 +72,10 @@ async Rateproducts(req, res, next) {
     const product_filtere = await this.Productrepo.Filter(maxprise,minprise);
     res.status(200).send(product_filtere);
   }
+
+
+  async average(req, res, next){
+    const avg=await this.Productrepo.Findaverage();
+    res.status(200).send(avg);
+  }
 }
