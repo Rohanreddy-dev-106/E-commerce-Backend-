@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import  mongodb from "mongodb";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -6,7 +6,7 @@ const url = process.env.MONGODB_CONNECTION_URL;
 let clintDB = ""
 async function ConnectTOmongoDb() {
     try {
-        const clint = await MongoClient.connect(url)
+        const clint = await mongodb.MongoClient.connect(url)
         clintDB = clint
         console.log("Mongodb is connected...");
         createCounter(clintDB.db())

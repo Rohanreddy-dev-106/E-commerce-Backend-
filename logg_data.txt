@@ -207,3 +207,6 @@
 {"level":"info","message":"/api/products/avg"}
 {"level":"info","message":"/api/products/avg"}
 {"level":"info","message":"/api/products/avg"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/"}
+{"level":"info","message":"/favicon.ico"}

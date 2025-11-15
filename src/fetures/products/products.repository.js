@@ -59,9 +59,10 @@ export default class Productrepository {
       const collection = db.collection(this._collectionName);
       const result = await collection
         .find({
-          price: {
-            $and: [{ $gte: parseInt(minprise) }, { $lte: parseInt(maxprise) }],
-          },
+          $and: [
+            { price: { $gte: parseInt(minprise) } },
+            { price: { $lte: parseInt(maxprise) } }
+          ]
         })
         .toArray();
       return result;
@@ -192,7 +193,9 @@ export default class Productrepository {
 //     $group: {
 //       _id: "$TotalRatings",
 //       products: { $push: "$name" },
-//          count: { $sum: 1 }  
+//          count: { $sum: 1 }
 //     },
 //   },
+//    {$sort:{count:-1}}
 // ]);
+

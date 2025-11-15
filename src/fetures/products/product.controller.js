@@ -1,9 +1,3 @@
-/**
- * The class `Products` contains methods for adding products, getting all products, getting a single
- * product, rating products, and filtering products based on price.
- *
- * @format
- */
 
 import productModel from "./product.model.js";
 import Productrepository from "./products.repository.js";
