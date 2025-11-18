@@ -17,6 +17,7 @@ router.post("/signup",(req,res,next)=>{
     usercontroller.signup(req,res,next)
 })
 router.post("/signin", usercontroller.signin.bind(usercontroller));
+router.post("/logout", usercontroller.logout.bind(usercontroller));
 
 
 

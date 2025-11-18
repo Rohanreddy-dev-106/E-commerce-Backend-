@@ -1,3 +1,5 @@
+/* The Usercontroller class handles user signup, signin, and logout operations with password hashing,
+JWT token creation, and cookie management in a Node.js application. */
 
 import Usermodel from "./user.model.js";
 import jwt from "jsonwebtoken";
