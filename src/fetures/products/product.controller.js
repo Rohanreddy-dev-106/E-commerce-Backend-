@@ -72,4 +72,5 @@ async Rateproducts(req, res, next) {
     const avg=await this.Productrepo.Findaverage();
     res.status(200).send(avg);
   }
+ 
 }

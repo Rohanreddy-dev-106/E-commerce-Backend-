@@ -23,5 +23,7 @@ router.get("/avg",(req,res,next)=>{ProductControler.average(req,res,next)})
 router.get("/one/:id",(req,res,next)=>{ProductControler.Getone(req,res,next)});
 router.get("/filter",(req,res,next)=>{ProductControler.Filterproducts(req,res,next)})
 router.post("/rate",(req,res,next)=>{ProductControler.Rateproducts(req,res,next)})
+
 export default router;
+
 

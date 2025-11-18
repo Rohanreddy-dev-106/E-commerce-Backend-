@@ -72,4 +72,20 @@ export default class Usercontroller {
             res.status(500).send("Signin failed");
         }
     }
+    async logout(req, res, next) {
+    try {
+        res.clearCookie("jwtToken", {
+            httpOnly: true,
+        });
+
+        return res.status(200).send({
+            message: "Logout successful"
+        });
+
+    } catch (error) {
+        console.log("Logout Error:", error.message);
+        res.status(500).send("Logout failed");
+    }
+}
+
 }

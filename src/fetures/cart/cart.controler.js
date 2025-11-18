@@ -46,5 +46,15 @@ export default class Cartcontroler {
       await this.cartrepo.delete(productID,userid)
      res.status(404).send("cARD is deleted...");
     }
+  async items(req, res, next) {
+  try {
+    const items = await this.cartrepo.CardItems("u12346dnndn123");
+    res.status(200).send(items);
+  } catch (err) {
+     console.log(err.message);
+     
+  }
+}
+
 
 }

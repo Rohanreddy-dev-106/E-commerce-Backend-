@@ -22,7 +22,7 @@ export default class Cardrepository {
       if (findcart) {
         const result = await collection.updateOne(
           { UserID: card.UserID, productID: card.productID },
-          { $inc: { quantity: card.quentaty } } 
+          { $inc: { quantity: card.quentaty } }
         );
         return result;
       } else {
@@ -82,4 +82,32 @@ export default class Cardrepository {
       console.error("Error in Nextcounter:", error.message);
     }
   }
+async CardItems(Userid) {
+  const db = GetDb();
+  const collection = db.collection(this.collection_name);
+
+  const result = await collection.aggregate([
+    { $match: { UserID: Userid } },
+    {
+      $addFields: {
+        productObjId: { $toObjectId: "$productID" } // convert string to  ObjectId
+      }
+    },
+    {
+      $lookup: {
+        from: "products",
+        localField: "productObjId", 
+        foreignField: "_id",
+        as: "productDetails"
+      }
+    },
+   
+  ]).toArray();
+
+  return result;
 }
+
+
+
+}
+
